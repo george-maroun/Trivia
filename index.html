@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                let correct = document.querySelector("#correct");
+                let incorrect = document.querySelectorAll(".incorrect");
+
+                <!-- Display incorrect and change button background to green-->
+                correct.addEventListener('click', function(){
+                    correct.style.backgroundColor = "green";
+                    correct.style.color = "white";
+                    correct.style.border = "white";
+                    document.querySelector("#message1").innerHTML = "Correct!";
+
+                })
+                <!-- Display incorrect and change button background to red-->
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function(){
+                        incorrect[i].style.backgroundColor = "firebrick";
+                        incorrect[i].style.color = "white";
+                        incorrect[i].style.border = "white";
+                        document.querySelector("#message1").innerHTML = "Woops! try again bud";
+
+                    })
+                }
+                <!-- Display correct and change input font to green-->
+                document.querySelector("#check").addEventListener('click', function(){
+                    let input = document.querySelector("input");
+                    if (input.value == "bat" || input.value == "bats" || input.value == "the bat") {
+                        input.style.color = "green";
+                        document.querySelector("#message2").innerHTML = "Nice!";
+                    }
+                    <!-- Display incorrect and change input font to red-->
+                    else {
+                        input.style.color = "red";
+                        document.querySelector("#message2").innerHTML = "nope";
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- Multiple choice question here -->
+                <h3>How tall was the tallest human on record? </h3>
+                <button type="button" class="btn btn-outline-primary incorrect">7 feet 10 inches</button>
+                <button type="button" class="btn btn-outline-primary incorrect">8 feet</button>
+                <button type="button" class="btn btn-outline-primary incorrect">9 feet 3 inches</button>
+                <button type="button" class="btn btn-outline-primary incorrect">8 feet 5 inches</button>
+                <button type="button" class="btn btn-outline-primary" id="correct">8 feet 11 inches</button>
+                <p id="message1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- Free response question here -->
+                <h3>What's the only mammal that can fly?</h3>
+                <input type="text">
+                <button type="button" class="btn btn-outline-primary" id="check">Check Answer</button>
+                <p id="message2"></p>
+            </div>
+        </div>
+    </body>
+</html>
